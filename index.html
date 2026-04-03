@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Abundance Breaker - Break the Cycle for Free</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #0f0f0f; color: #fff; margin: 0; padding: 20px; line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; background: #1a1a1a; padding: 30px; border-radius: 12px; }
+        h1 { text-align: center; color: #00ff9d; }
+        input, textarea, button { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: none; font-size: 16px; }
+        input, textarea { background: #333; color: #fff; }
+        button { background: #00ff9d; color: #000; font-weight: bold; cursor: pointer; }
+        button:hover { background: #00cc7a; }
+        #result { margin-top: 20px; padding: 20px; background: #222; border-radius: 8px; white-space: pre-wrap; display: none; }
+        .share { margin-top: 15px; padding: 10px; background: #333; border-radius: 8px; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 AI Abundance Breaker</h1>
+        <p style="text-align:center;">The $0 tool that helps you use AI to make old "rich get richer" games irrelevant.<br>Built in minutes. Works forever.</p>
+        
+        <label>Your skills or interests (e.g. "gaming, Australia, sales"):</label>
+        <input type="text" id="skills" placeholder="gaming, Australia, sales">
+        
+        <label>Your goal (e.g. "side hustle with $0", "learn AI fast", "build something viral"):</label>
+        <input type="text" id="goal" placeholder="side hustle with $0">
+        
+        <label>Location / extra info (optional):</label>
+        <input type="text" id="location" placeholder="Sydney, Australia">
+        
+        <button onclick="generatePlan()">Generate My Free Abundance Plan</button>
+        
+        <div id="result"></div>
+        
+        <div class="share" id="shareBox" style="display:none;">
+            <p>Share your result →</p>
+            <button onclick="shareResult()">Copy Shareable Text</button>
+        </div>
+        
+        <p style="text-align:center; margin-top:30px; font-size:14px;">
+            Made with Grok • Hosted free on GitHub Pages • Spread the abundance
+        </p>
+    </div>
+
+    <script>
+        function generatePlan() {
+            const skills = document.getElementById('skills').value.trim() || "general skills";
+            const goal = document.getElementById('goal').value.trim() || "build something";
+            const location = document.getElementById('location').value.trim() || "anywhere";
+            
+            const resultDiv = document.getElementById('result');
+            const shareBox = document.getElementById('shareBox');
+            
+            const prompts = `
+Top 3 AI Prompts for you:
+1. "Act as an expert business coach. I have skills in ${skills}. My goal is ${goal} in ${location}. Give me a complete step-by-step plan using only free AI tools to reach my first $1000/month."
+2. "Create 10 viral short video ideas for TikTok/YouTube Shorts about using AI to create abundance. Target audience: people tired of the rich-get-richer cycle. Include exact hooks."
+3. "I want to build a simple web tool like this one. Give me the full HTML + JS code for [your next idea] that I can host on GitHub Pages for free."
+            `.trim();
+            
+            const plan = `Your 30-Day Abundance Plan (tailored for ${skills} / ${goal} in ${location}):
+
+Week 1: Learn & Build
+- Spend 30-60 min/day using free AI (Grok, ChatGPT, etc.)
+- Build one small tool or content piece using the prompts above.
+
+Week 2: Create & Post Daily
+- Make 1-3 faceless shorts per day about your journey.
+- Post on TikTok + YouTube Shorts + Reels.
+
+Week 3: Share & Iterate
+- Add a share button to anything you build.
+- Reply to every comment.
+
+Week 4: Compound
+- Use the traffic to launch your next free tool or digital product.
+
+Your Abundance Score: ${Math.floor(Math.random()*40) + 75}/100
+(You're already ahead of 99% of people who just scroll.)
+
+Copy the prompts above and start right now. The old cycle breaks when millions do this.
+            `;
+            
+            resultDiv.innerHTML = `<h2>Your Personalized Plan</h2><pre>${plan}</pre><h3>Ready-to-use AI Prompts:</h3><pre>${prompts}</pre>`;
+            resultDiv.style.display = 'block';
+            shareBox.style.display = 'block';
+            
+            // Auto-scroll to result
+            resultDiv.scrollIntoView({ behavior: "smooth" });
+        }
+        
+        function shareResult() {
+            const resultText = document.getElementById('result').innerText;
+            const shareText = `I just used the free AI Abundance Breaker tool and got my plan! It literally built this in seconds. Try it yourself (100% free): https://yourusername.github.io/abundance-breaker\n\n${resultText.substring(0, 300)}...`;
+            
+            navigator.clipboard.writeText(shareText).then(() => {
+                alert("Share text copied! Paste it on TikTok, Twitter/X, Reddit, etc.");
+            });
+        }
+    </script>
+</body>
+</html>
